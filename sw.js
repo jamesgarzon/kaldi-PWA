@@ -31,6 +31,9 @@ self.addEventListener("fetch", (event) => {
   console.log("[ServiceWorker] Fetch");
   event.respondWith(
     caches.match(event.request).then(function(response) {
+      // if (event.request.cache === 'only-if-cache') {
+			//      event.request.mode = 'same-origin'
+      //    }
       return response || fetch(event.request);
     })
   );
